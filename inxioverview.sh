@@ -4,13 +4,12 @@
 ## - underscore (npm) (Tested with Version 0.2.19)
 ## Tools needed on Client:
 ## - inxi (min. version 3.0.28 - tty flag introduced in this version) 
-USERNAME=root
-OVERVIEWFILE="/var/www/html/dokuwiki/data/pages/overview.txt"
-filename='/var/www/html/dokuwiki/data/pages/hosts.txt'
-filelines=`cat $filename`
+source config.sh
+
+filelines=`cat $HOSTFILE`
 for HOSTNAME in $filelines ; do
 	# Check if Port 22 is open
-	if nc -z $HOSTNAME 22 2>/dev/null; then
+	if nc -z $HOSTNAME $PORT 2>/dev/null; then
  
 		# Setting up first things of the txt (eg. Kernel-Version) and executing inxi 
 		SCRIPT="cd /tmp; echo -n '| ' > ${HOSTNAME}.txt; 

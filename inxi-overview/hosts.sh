@@ -1,4 +1,5 @@
 #!/bin/bash
+# Generates a Hostfile for different scripts
 
 source config.sh
 
